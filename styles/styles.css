@@ -39,6 +39,8 @@ body{
     padding: .5em;
 }
 .form__inputs{
+    display: flex;
+    flex-direction: column;
     font-size: 15px;
     background-color: var(--backgroundGrid);
     padding: 2em 3em;
@@ -73,4 +75,16 @@ body{
 .inputs__button:hover{
     opacity: 0.8;
     transition: 0.2s ease-in-out;
+}
+.inputs__reset{
+    text-align: center;
+    padding-top: 1em;
+    text-decoration: none;
+    font-weight: 500;
+}
+.inputs__reset:hover{
+    color: var(--color3);
+    text-shadow: 0 0 8px var(--color3);
+    transition: all .1s ease-in-out;
+    text-decoration: underline;
 }
