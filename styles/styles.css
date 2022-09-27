@@ -2,14 +2,16 @@
     --backgroundBody: 	#D3D3D3;
     --color1: #FFFFFF;
     --color2: #4F4F4F;
-    --color3: #4682B4;
+    --color3: #CD853F;
     --backgroundGrid: #FFFFFF;
     --font: 'Montserrat';
-    --button: #6495ED;
+    --shadow: #DEB887;
 }
 
 body{
-    background-color: var(--backgroundBody);
+    background-image: url(/hotel-manager/img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: var(--font);
     color: var(--color2);
     display: flex;
@@ -26,10 +28,11 @@ body{
     align-items: center;
 }
 .login__title{
-    color: var(--color3);
+    color: var(--color1);
     font-weight: 500;
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
+    text-shadow: 2px 2px 2px var(--color3);
 }
 .login__text{
     text-align: center;
@@ -51,8 +54,8 @@ body{
 }
 .inputs__data:focus{
     outline: none;
-    border-color: var(--backgroundBody);
-    box-shadow: 0 0 4px var(--backgroundBody);
+    border-color: var(--color3);
+    box-shadow: 0 0 4px var(--color3);
 }
 .inputs__button{
     color: var(--color1);
