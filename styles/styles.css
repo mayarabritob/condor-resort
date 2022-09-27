@@ -1,0 +1,73 @@
+:root{
+    --backgroundBody: 	#D3D3D3;
+    --color1: #FFFFFF;
+    --color2: #4F4F4F;
+    --color3: #4682B4;
+    --backgroundGrid: #FFFFFF;
+    --font: 'Montserrat';
+    --button: #6495ED;
+}
+
+body{
+    background-color: var(--backgroundBody);
+    font-family: var(--font);
+    color: var(--color2);
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+    font-size: 18px;
+    cursor: default;
+}
+.login{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login__title{
+    color: var(--color3);
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+}
+.login__text{
+    text-align: center;
+    padding: .5em;
+}
+.form__inputs{
+    font-size: 15px;
+    background-color: var(--backgroundGrid);
+    padding: 2em 3em;
+    margin: 2em;
+    border-radius: 5px;
+    box-shadow: 0 0 4px var(--color2);
+}
+.inputs__data{
+    border: 1px solid var(--backgroundBody);
+    padding: .5em 15em .5em 1em;
+    margin: 1em 0;
+    border-radius: 5px;
+}
+.inputs__data:focus{
+    outline: none;
+    border-color: var(--backgroundBody);
+    box-shadow: 0 0 4px var(--backgroundBody);
+}
+.inputs__button{
+    color: var(--color1);
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    padding: 1em 2em;
+    border-radius: 5px;
+    margin-top: 1em;
+    width: 100%;
+    background-color: var(--color3);
+    cursor: pointer;
+
+}
+.inputs__button:hover{
+    opacity: 0.8;
+    transition: 0.2s ease-in-out;
+}
