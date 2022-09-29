@@ -1,24 +1,34 @@
+@import url(controle.css);
+@import url(apartamentos.css);
+@import url(clientes.css);
+@import url(planos.css);
+
 :root{
-    --backgroundBody: 	#D3D3D3;
+    --backgroundBody: 	#e4e4e4;
     --color1: #FFFFFF;
     --color2: #4F4F4F;
     --color3: #CD853F;
+    --backgroundPages: #23a7dffe;
     --backgroundGrid: #FFFFFF;
     --font: 'Montserrat';
     --shadow: #DEB887;
 }
 
 body{
-    background-image: url(../img/background.png);
-    background-repeat: no-repeat;
-    background-size: cover;
     font-family: var(--font);
     color: var(--color2);
-    display: flex;
-    justify-content: center;
     font-weight: 300;
     font-size: 18px;
     cursor: default;
+    background-color: var(--backgroundBody);
+}
+.page-login{
+    width: 100%;
+    background-image: url(../img/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
 }
 .login{
     height: 100vh;
@@ -37,6 +47,7 @@ body{
 .login__text{
     text-align: center;
     padding: .5em;
+    text-shadow: 2px 2px 2px var(--color1);
 }
 .form__inputs{
     display: flex;
@@ -47,12 +58,14 @@ body{
     margin: 2em;
     border-radius: 5px;
     box-shadow: 0 0 4px var(--color2);
+    opacity: 0.87;
 }
 .inputs__data{
     border: 1px solid var(--backgroundBody);
     padding: .5em 15em .5em 1em;
     margin: 1em 0;
     border-radius: 5px;
+
 }
 .inputs__data:focus{
     outline: none;
@@ -70,10 +83,12 @@ body{
     width: 100%;
     background-color: var(--color3);
     cursor: pointer;
+    transition: 0.2s ease-in-out;
 
 }
 .inputs__button:hover{
-    opacity: 0.8;
+    color: var(--color2);
+    background-color: var(--shadow);
     transition: 0.2s ease-in-out;
 }
 .inputs__reset{

@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="./styles/styles.css">
         <title>Condor Resort</title>
         <link rel="SHORTCUT ICON" href="./img/icon-48x48.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,12 +13,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <main>    
+        <main class="page-login">    
             <section class="login">
                     <h1 class="login__title">Condor Resort</h1>
                     <h2 class="login__text">Digite seu email e senha para continuar</h2>
                 <div class="form">
-                    <form class="form__inputs">
+                    <form action=controle.html class="form__inputs">
                         <label for="user" class="inputs__title">Email</label>
                         
                         <input type="email" id="user" name="Email" class="inputs__data" required>
@@ -26,7 +27,10 @@
                         
                         <input type="password" id="password" name="Senha" class="inputs__data" required>
                         
-                        <button type="submit" value="Enviar" class="inputs__button">Entrar</button>
+                        <a href="controle.html">
+                        <button type="submit" value="login" id="login" class="inputs__button">
+                            Entrar</button>
+                        </a>
                         <a class="inputs__reset" href="#">Esqueci a senha</a>
                     </form>    
                 </div>
