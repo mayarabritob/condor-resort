@@ -8,16 +8,16 @@
     --color1: #FFFFFF;
     --color2: #4F4F4F;
     --color3: #CD853F;
-    --backgroundPages: #23a7dffe;
+    --backgroundPages: #031e29c2;
     --backgroundGrid: #FFFFFF;
     --font: 'Montserrat';
-    --shadow: #DEB887;
+    --shadow: #031e2997;
     --button: #a7a6a6;
 }
 
 body{
     font-family: var(--font);
-    color: var(--color2);
+    color: var(--backgroundPages);
     font-weight: 300;
     font-size: 18px;
     cursor: default;
@@ -25,7 +25,7 @@ body{
 }
 .page-login{
     width: 100%;
-    background-image: url(../img/background.png);
+    background-image: url(../img/background1);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -43,12 +43,13 @@ body{
     font-weight: 500;
     font-size: 40px;
     text-align: center;
-    text-shadow: 2px 2px 2px var(--color3);
+    text-shadow: 2px 2px 2px var(--backgroundPages);
 }
 .login__text{
+    color: var(--color1);
     text-align: center;
     padding: .5em;
-    text-shadow: 2px 2px 2px var(--color1);
+    text-shadow: 2px 2px 2px var(--backgroundPages);
 }
 .form__inputs{
     display: flex;
@@ -59,7 +60,7 @@ body{
     margin: 2em;
     border-radius: 5px;
     box-shadow: 0 0 4px var(--color2);
-    opacity: 0.87;
+    
 }
 .inputs__data{
     border: 1px solid var(--backgroundBody);
@@ -70,8 +71,8 @@ body{
 }
 .inputs__data:focus{
     outline: none;
-    border-color: var(--color3);
-    box-shadow: 0 0 4px var(--color3);
+    border-color: var(--shadow);
+    box-shadow: 0 0 4px var(--shadow);
 }
 .inputs__button{
     color: var(--color1);
@@ -82,13 +83,12 @@ body{
     border-radius: 5px;
     margin-top: 1em;
     width: 100%;
-    background-color: var(--color3);
+    background-color: var(--backgroundPages);
     cursor: pointer;
     transition: 0.2s ease-in-out;
 
 }
 .inputs__button:hover{
-    color: var(--color2);
     background-color: var(--shadow);
     transition: 0.2s ease-in-out;
 }

@@ -17,22 +17,22 @@
   font-weight: 500;
   font-size: 20px;
   text-align: center;
-  text-shadow: 2px 2px 2px var(--color3);
 }
 
 .principal {
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 20% 80%;
   width: 100%;
 }
 
 .menu-links {
-  position: absolute;
   background-color: var(--backgroundPages);
   height: 100vh;
   padding: 2em .5em;
 }
 
 .list__item {
+  color: var(--color1);
   padding: 1em 2em;
   display: flex;
   align-items: center;
@@ -40,60 +40,70 @@
 }
 
 .list__item:hover {
-  color: var(--color1);
+  color: var(--color3);
   transition: all 0.2s ease-in-out;
-  text-shadow: 0 0 2px var(--color3);
 }
 
 .material-symbols-outlined {
   padding-right: .5em;
 }
 
-.container {
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.register{
+  display: inline-block;
+}
+
+.row {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin: 1em 2em;
+}
+
+.column {
   display: flex;
   justify-content: flex-end;
-  margin: 0 2%;
+}
+.grid{
+  display: flex;
+  justify-content: center;
 }
 
 .container__button {
-  display: block;
-  text-align: center;
-  padding: .5em .5em;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: .5em 1em;
   background-color: var(--button);
   border-radius: 5px;
   transition: linear 0.2s;
+  cursor: pointer;
 }
 
-.container__button:hover {
+.container__button:hover, .container__button:focus {
   color: var(--color1);
   transition: linear 0.2s;
   background-color: var(--backgroundPages);
   box-shadow: 0 0 10px var(--color2);
 }
 
-.column {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 2em;
-}
-
-.row {
-  display: grid;
-  flex-wrap: wrap;
-  gap: 2em;
-  padding: 3em 0;
-}
-
 .container__item {
+  width: 23%;
+  height: 100%;
+  text-align: center;
   background-color: var(--color1);
   border-radius: 5px;
+  transition: linear 0.2s;
 }
-
 .apartament__title {
-  padding: 2em;
-  text-align: center;
+  padding: 3em 2em;
 }
 
 .container__item:hover {
   box-shadow: 0 0 5px var(--backgroundPages);
+  transition: linear 0.2s;
 }

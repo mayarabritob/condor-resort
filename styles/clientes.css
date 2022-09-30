@@ -1,0 +1,69 @@
+#register-list {
+     display: none;
+}
+
+#new-register {
+     display: none;
+}
+
+body[page=list]  #registerList {
+     display: block;
+}
+
+body[page=new] #new-register {
+     display: flex;
+     justify-content: center;
+}
+
+body[page=new] .container__button {
+     display: none;
+}
+
+.table-list {
+     display: grid;
+     justify-content: space-around;
+     width: 100%;
+     font-size: 18px;
+     border-collapse: collapse;
+}
+
+table th, table td {
+     font-size: 18px;
+      padding: 2em;
+}
+
+.label {
+     display: flex;
+     align-items: center;
+     margin: 2em;
+}
+
+.label__title {
+     padding: 0 .5em;
+}
+
+.label__input{
+     border-radius: 5px;
+     padding: .5em 1.5em;
+}
+.label__input:focus{
+     outline: none;
+     box-shadow: 0 0 5px var(--backgroundPages);
+}
+.button-register {
+     display: inline-flex;
+     flex-direction: row-reverse;
+     align-items: center;
+     padding: .5em;
+     margin-right: 2em;
+     transition: 0.2s ease-in-out;
+     cursor: pointer;
+}
+
+.button-register:hover,
+.button-register:focus {
+     background-color: var(--backgroundPages);
+     color: var(--color1);
+     border-radius: 5px;
+     transition: 0.2s ease-in-out;
+}
