@@ -59,7 +59,7 @@
           <div class="container register">
                <div class="container column">
                     <div class="container row">
-                         <button onclick="view('new', true)" class="container__button">Cadastrar Usuário
+                         <button onclick="view('new', true)" class="container__button">Cadastrar Cliente
                               <span class="material-symbols-outlined">
                                    person_add
                               </span>
@@ -76,6 +76,7 @@
                                         <th class="table-client">CPF</th>
                                         <th class="table-client">Nome Completo</th>
                                         <th class="table-client">Telefone</th>
+                                        <th></th>
                                    </tr>
                               </thead>
                               <tbody id="register-list-body"></tbody>
@@ -88,13 +89,13 @@
                          <form>
                               <div class="label">
                                    <div class="label__title" hidden>Id</div>
-                                   <div><input type="number" class="label__input id" hidden id="id"></div>
+                                   <div><input type="number" class="label__input id" readonly hidden id="id"></div>
                                    <div class="label__title">CPF</div>
                                    <div><input type="text" class="label__input" required id="cpf"></div>
                                    <div class="label__title">Nome</div>
                                    <div><input type="text" class="label__input" required id="name"></div>
                                    <div class="label__title">Telefone</div>
-                                   <div><input type="tel" class="label__input" required id="tel"></div>
+                                   <div><input type="tel" class="label__input" required id="fone"></div>
                               </div>
                          </form>
                     </div>

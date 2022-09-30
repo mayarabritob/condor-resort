@@ -15,9 +15,13 @@ body[page=new] #new-register {
      justify-content: center;
 }
 
-body[page=new] .container__button {
+body[page=new] .container__button, .grid{
      display: none;
 }
+body[page=list] .grid{
+     display: flex;
+}
+
 
 .table-list {
      display: grid;

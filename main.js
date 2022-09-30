@@ -1,8 +1,10 @@
-const KEY_BD = '@usuariosestudo'
+const KEY_BD = '@clientes'
 
 var registerList = {
      lastId:0,
-     users:[]
+     users:[
+        {id:1, cpf:'03621688145', name:'Mayara Brito de Oliveira', fone:'67 99296-4312'}
+     ]
 }
 
 
@@ -20,27 +22,21 @@ function saveBD(){
  
 
 function render(){
-     const tbody = document.getElementById('registerList-body')
+     const tbody = document.getElementById('register-list-body')
      if(tbody){
-          var data = registerList.users;
-          if(filter.trim()){
-               const expReg = eval(`/${filter.trim().replace(/[^\d\w]+/g,'.*')}/i`)
-            data = data.filter( user => {
-                return expReg.test( user.cpf ) || expReg.test( user.name ) || expReg.test( user.tel )
-            } )
-        }
+
         data = data
           .sort( (a,b) => {
                return a.name < b.name ? -1 : 1
           })
-          .map( usuario => {
+          .map( user => {
                return `<tr>
                        <td>${user.id}</td>
                        <td>${user.cpf}</td>
                        <td>${user.name}</td>
-                       <td>${user.tel}</td>
+                       <td>${user.fone}</td>
                        <td>
-                           <button onclick='view("new",false,${user.id})'>Editar</button>
+                           <button class='button-register' onclick='view("new",false,${user.id})'>Editar</button>
                            <button class='button-register' onclick='perguntarSeDeleta(${user.id})'>Deletar</button>
                        </td>
                    </tr>`
@@ -49,21 +45,22 @@ function render(){
    }
 }
 
-function insertUser(cpf, name, tel){
+function insertUser(cpf, name, fone){
      const id = registerList.lastId + 1;
      registerList.lastId = id;
      registerList.users.push({
-         id, cpf, name, tel
+         id, cpf, name, fone
      })
      saveBD()
      render()
      view('list')
  }
  
- function editUser(id, cpf, name, tel){
+ function editUser(id, cpf, name, fone){
      var user = registerList.users.find( user => user.id == id )
+     user.cpf = cpf;
      user.name = name;
-     user.tel = tel;
+     user.fone = fone;
      saveBD()
      render()
      view('list')
@@ -85,20 +82,21 @@ function insertUser(cpf, name, tel){
  
  
  function limparEdicao(){
+    document.getElementById('cpf').value = ''
      document.getElementById('name').value = ''
-     document.getElementById('tel').value = ''
+     document.getElementById('fone').value = ''
  }
  
-function view(page, new=false, id=null){
+function view(page, newP=false, id=null){
      document.body.setAttribute('page', page)
-     if(new) limparEdicao()
+     if(newP) limparEdicao()
      if(id){
          const user = registerList.users.find( user => user.id == id )
          if(user){
              document.getElementById('id').value = user.id
              document.getElementById('cpf').value = user.cpf
-             document.getElementById('name').value = usuario.name
-             document.getElementById('tel').value = usuario.tel
+             document.getElementById('name').value = user.name
+             document.getElementById('fone').value = user.fone
          }
      }
      document.getElementById('name').focus()
@@ -110,12 +108,12 @@ function submit(e){
          id: document.getElementById('id').value,
          cpf: document.getElementById('cpf').value,
          name: document.getElementById('name').value,
-         tel: document.getElementById('tel').value,
+         fone: document.getElementById('fone').value,
      }
      if(data.id){
-         editUser(data.id, data.cpf, data.name, data.tel)
+         editUser(data.id, data.cpf, data.name, data.fone)
      }else{
-         insertUser(data.cpf, data.name, data.tel )
+         insertUser(data.cpf, data.name, data.fone)
      }
  }
 
