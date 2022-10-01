@@ -2,9 +2,7 @@ const KEY_BD = '@clientes'
 
 var registerList = {
      lastId:0,
-     users:[
-        {id:1, cpf:'03621688145', name:'Mayara Brito de Oliveira', fone:'67 99296-4312'}
-     ]
+     users:[]
 }
 
 
@@ -26,7 +24,7 @@ function render(){
      if(tbody){
 
         data = data
-          .sort( (a,b) => {
+          .sort( (a, b) => {
                return a.name < b.name ? -1 : 1
           })
           .map( user => {
@@ -40,7 +38,7 @@ function render(){
                            <span class="material-symbols-outlined">
                            edit
                       </span></button>
-                           <button class='button-register' onclick='perguntarSeDeleta(${user.id})'>
+                           <button class='button-register' onclick='askDel(${user.id})'>
                            <span class="material-symbols-outlined">
                            delete
                       </span></button>
@@ -93,9 +91,9 @@ function insertUser(cpf, name, fone){
      document.getElementById('fone').value = ''
  }
  
-function view(page, newP=false, id=null){
-     document.body.setAttribute('page', page)
-     if(newP) limparEdicao()
+function view(page, newPage=false, id=null){
+     document.body.setAttribute('page',page)
+     if(newPage) limparEdicao()
      if(id){
          const user = registerList.users.find( user => user.id == id )
          if(user){

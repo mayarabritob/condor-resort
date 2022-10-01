@@ -35,8 +35,7 @@ body[page=list] .grid {
      display: block;
      font-size: 18px;
      border-collapse: collapse;
-     border: 1px solid var(--backgroundPages);
-     border-radius: 5px;
+     border-bottom: 1px solid var(--backgroundPages);
      width: 100%;
 }
 
