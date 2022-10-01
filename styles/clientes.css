@@ -6,7 +6,7 @@
      display: none;
 }
 
-body[page=list] #registerList {
+body[page=list] #register-list {
      display: block;
 }
 
@@ -31,19 +31,15 @@ body[page=list] .grid {
      letter-spacing: 2px;
 }
 
-.table-list {
-     display: block;
-     font-size: 18px;
-     border-collapse: collapse;
+table th {
+     padding: 1em 3em;
      border-bottom: 1px solid var(--backgroundPages);
-     width: 100%;
+
 }
 
-table th,
 table td {
-     padding: 1em 4.5em;
+     padding: 1em 3em;
      font-size: 18px;
-     text-align: center;
 }
 
 .table-client {
@@ -88,4 +84,14 @@ table td {
      color: var(--color1);
      border-radius: 5px;
      transition: 0.2s ease-in-out;
+}
+.button-list{
+     padding: .3em;
+     cursor: pointer;
+     transition: 0.2s ease-in-out;
+}
+.button-list:hover, .button-list:focus{
+     color: var(--color3);
+     transition: 0.2s ease-in-out;
+     text-shadow: 0 0 5px var(--color3);
 }

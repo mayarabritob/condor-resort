@@ -1,128 +1,116 @@
-const KEY_BD = '@clientes'
-
-var registerList = {
-     lastId:0,
-     users:[]
-}
-
-
-function saveBD(){
-     localStorage.setItem(KEY_BD, JSON.stringify(registerList) )
- }
-
- function readBD(){
-     const data = localStorage.getItem(KEY_BD)
-     if(data){
-          registerList = JSON.parse(data)
-     }
-     render()
- }
- 
+let cadastro = false;
 
 function render(){
-     const tbody = document.getElementById('register-list-body')
-     if(tbody){
-
-        data = data
-          .sort( (a, b) => {
-               return a.name < b.name ? -1 : 1
-          })
-          .map( user => {
-               return `<tr>
-                       <td class="table-client">${user.id}</td>
-                       <td class="table-client">${user.cpf}</td>
-                       <td class="table-client">${user.name}</td>
-                       <td class="table-client">${user.fone}</td>
-                       <td class="table-client">
-                           <button class='button-register' onclick='view("new",false,${user.id})'>
-                           <span class="material-symbols-outlined">
-                           edit
-                      </span></button>
-                           <button class='button-register' onclick='askDel(${user.id})'>
-                           <span class="material-symbols-outlined">
-                           delete
-                      </span></button>
-                       </td>
-                   </tr>`
-           } )
-       tbody.innerHTML = data.join('')
-   }
+    const tbody = document.getElementById('register-list-body');
+    const data = localStorage.getItem("users_db");
+    if(tbody && data != null) {
+        const clientes = JSON.parse(data);
+        clientes.sort( (a,b) => {
+            return a.id < b.id ? -1 : 1
+        })
+        tbody.innerHTML = clientes.map( user => {
+            return `<tr>
+                        <td hidden>${user.id}</td>
+                        <td>${user.cpf}</td>
+                        <td>${user.name}</td>
+                        <td>${user.fone}</td>
+                        <td>
+                            <button class='button-list' onclick='view("new",false,${user.id})'><span class="material-symbols-outlined">
+                            edit</span></button>
+                            <button class='button-list' onclick='askDel(${user.id})'><span class="material-symbols-outlined">
+                            delete</span></button>
+                        </td>
+                    </tr>`
+        })
+    }
 }
 
-function insertUser(cpf, name, fone){
-     const id = registerList.lastId + 1;
-     registerList.lastId = id;
-     registerList.users.push({
-         id, cpf, name, fone
-     })
-     saveBD()
-     render()
-     view('list')
- }
+function insertUser() {
+    let cpf = document.getElementById("cpf").value;
+    let name = document.getElementById("name").value;
+    let fone = document.getElementById("fone").value;
+    const usersStorage = JSON.parse(localStorage.getItem("users_db"));
+    const clienteCadastrado = usersStorage?.filter((user) => user.cpf===cpf);
+
+    if(clienteCadastrado?.length) {
+        clienteCadastrado[0].cpf = document.getElementById('cpf').value;
+        clienteCadastrado[0].name = document.getElementById('name').value;
+        clienteCadastrado[0].fone = document.getElementById('fone').value;
+        cadastro = true;
+        alert("Cadastro foi atualizado!");
+
+    }
+
+    let novoCliente;
+
+    if(usersStorage && cadastro===false) {
+        let id = usersStorage.length + 1;
+        novoCliente = [...usersStorage, { id, cpf, name, fone }];
+    } else {
+        id = 1;
+        novoCliente = [{ id, cpf, name, fone }];
+    }
+
+    if(cadastro) {
+        novoCliente = [...usersStorage];
+    }
+
+    localStorage.setItem("users_db", JSON.stringify(novoCliente));
+    render()
+    view('list')
+    cadastro=false;
+}
  
  function editUser(id, cpf, name, fone){
-     var user = registerList.users.find( user => user.id == id )
-     user.cpf = cpf;
-     user.name = name;
-     user.fone = fone;
-     saveBD()
-     render()
-     view('list')
- }
+    const usersStorage = JSON.parse(localStorage.getItem("users_db"));
+    const clienteCadastrado = usersStorage?.filter((user) => user.id===id);
+    clienteCadastrado.cpf = cpf;
+    clienteCadastrado.name = name;
+    clienteCadastrado.fone = fone;
+}
  
  function delUser(id){
-     registerList.users = registerList.users.filter( user => {
-         return user.id != id
-     } )
-     saveBD()
-     render()
- }
+    const usersStorage = JSON.parse(localStorage.getItem("users_db"));
+    const clienteCadastrado = usersStorage?.filter( user => {
+        return user.id != id
+    })
+    localStorage.clear();
+    localStorage.setItem("users_db", JSON.stringify(clienteCadastrado));
+    window.location.reload(true);
+}
  
  function askDel(id){
      if(confirm('Quer deletar o registro de id '+id)){
           delUser(id)
      }
- }
- 
+}
  
  function limparEdicao(){
     document.getElementById('cpf').value = ''
      document.getElementById('name').value = ''
      document.getElementById('fone').value = ''
- }
+}
  
-function view(page, newPage=false, id=null){
-     document.body.setAttribute('page',page)
-     if(newPage) limparEdicao()
+function view(page, newP=false, id=null){
+     document.body.setAttribute('page', page);
+     if(newP) limparEdicao()
      if(id){
-         const user = registerList.users.find( user => user.id == id )
-         if(user){
-             document.getElementById('id').value = user.id
-             document.getElementById('cpf').value = user.cpf
-             document.getElementById('name').value = user.name
-             document.getElementById('fone').value = user.fone
-         }
+        const usersStorage = JSON.parse(localStorage.getItem("users_db"));
+        const clienteCadastrado = usersStorage?.filter((user) => user.id===id);
+        if(clienteCadastrado){
+            document.getElementById('cpf').value = clienteCadastrado[0].cpf
+            document.getElementById('name').value = clienteCadastrado[0].name
+            document.getElementById('fone').value = clienteCadastrado[0].fone
+        }
      }
      document.getElementById('name').focus()
  }
 
 function submit(e){
-     e.preventDefault()
-     const data = {
-         id: document.getElementById('id').value,
-         cpf: document.getElementById('cpf').value,
-         name: document.getElementById('name').value,
-         fone: document.getElementById('fone').value,
-     }
-     if(data.id){
-         editUser(data.id, data.cpf, data.name, data.fone)
-     }else{
-         insertUser(data.cpf, data.name, data.fone)
-     }
- }
+     e.preventDefault();
+}
 
-
- window.addEventListener('load', () => {
-     readBD()
-     document.getElementById('new-register').addEventListener('submit', submit)
- })
+window.addEventListener('load', () => {
+    render();
+    document.getElementById('new-register').addEventListener('submit', submit);
+})

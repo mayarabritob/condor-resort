@@ -68,12 +68,15 @@
                     </div>
                </div>
                <div class="container column grid map">
-                    <h2 class="map__title">Listagem de Clientes</h2>
-                    <div id='registerList' class="container row">
-                         <table>
-                              <thead class="table-list">
+                    <div class="container row">
+                         <h2 class="map__title">Listagem de Clientes</h2>
+                    </div>
+                    <div id='register-list' class="container row">
+                         <table class="table">
+
+                              <thead class="table__list">
                                    <tr>
-                                        <th>Id</th>
+                                        <th hidden>Id</th>
                                         <th>CPF</th>
                                         <th>Nome</th>
                                         <th>Telefone</th>
@@ -85,17 +88,17 @@
                     </div>
                </div>
                <!-- TELA DE CADASTRO -->
-               <div class="container column"  id="new-register">
+               <div class="container column" id="new-register">
                     <h2 class="map__title">Cadastrar Cliente</h2>
                     <div class="container row">
                          <form>
                               <div class="label">
-                                   <div class="label__title" hidden>Id</div>
+                                   <div class="label__title" readonly hidden>Id</div>
                                    <div><input type="number" class="label__input id" readonly hidden id="id"></div>
                                    <div class="label__title">CPF</div>
-                                   <div><input type="text" class="label__input" required id="cpf"></div>
+                                   <div><input class="label__input" required id="cpf"></div>
                                    <div class="label__title">Nome</div>
-                                   <div><input type="text" class="label__input" required id="name"></div>
+                                   <div><input class="label__input" required id="name"></div>
                                    <div class="label__title">Telefone</div>
                                    <div><input type="tel" class="label__input" required id="fone"></div>
                               </div>
@@ -104,7 +107,7 @@
                     <div class="container column">
                          <div class="container row">
                               <div>
-                                   <button class="button-register">Salvar
+                                   <button class="button-register" onclick="insertUser()" type="button">Salvar
                                         <span class="material-symbols-outlined">
                                              add
                                         </span>
