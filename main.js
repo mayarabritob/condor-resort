@@ -31,13 +31,19 @@ function render(){
           })
           .map( user => {
                return `<tr>
-                       <td>${user.id}</td>
-                       <td>${user.cpf}</td>
-                       <td>${user.name}</td>
-                       <td>${user.fone}</td>
-                       <td>
-                           <button class='button-register' onclick='view("new",false,${user.id})'>Editar</button>
-                           <button class='button-register' onclick='perguntarSeDeleta(${user.id})'>Deletar</button>
+                       <td class="table-client">${user.id}</td>
+                       <td class="table-client">${user.cpf}</td>
+                       <td class="table-client">${user.name}</td>
+                       <td class="table-client">${user.fone}</td>
+                       <td class="table-client">
+                           <button class='button-register' onclick='view("new",false,${user.id})'>
+                           <span class="material-symbols-outlined">
+                           edit
+                      </span></button>
+                           <button class='button-register' onclick='perguntarSeDeleta(${user.id})'>
+                           <span class="material-symbols-outlined">
+                           delete
+                      </span></button>
                        </td>
                    </tr>`
            } )

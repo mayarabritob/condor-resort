@@ -6,7 +6,7 @@
      display: none;
 }
 
-body[page=list]  #registerList {
+body[page=list] #registerList {
      display: block;
 }
 
@@ -15,25 +15,42 @@ body[page=new] #new-register {
      justify-content: center;
 }
 
-body[page=new] .container__button, .grid{
+body[page=new] .container__button,
+.map {
      display: none;
 }
-body[page=list] .grid{
+
+body[page=list] .grid {
      display: flex;
 }
 
-
-.table-list {
-     display: grid;
-     justify-content: space-around;
-     width: 100%;
-     font-size: 18px;
-     border-collapse: collapse;
+.map__title {
+     font-size: 20px;
+     font-weight: 500;
+     text-transform: uppercase;
+     letter-spacing: 2px;
 }
 
-table th, table td {
+.table-list {
+     display: block;
      font-size: 18px;
-      padding: 2em;
+     border-collapse: collapse;
+     border: 1px solid var(--backgroundPages);
+     border-radius: 5px;
+     width: 100%;
+}
+
+table th,
+table td {
+     padding: 1em 4.5em;
+     font-size: 18px;
+     text-align: center;
+}
+
+.table-client {
+     background-color: var(--color1);
+     gap: 1em;
+     border-radius: 5px;
 }
 
 .label {
@@ -46,14 +63,16 @@ table th, table td {
      padding: 0 .5em;
 }
 
-.label__input{
+.label__input {
      border-radius: 5px;
      padding: .5em 1.5em;
 }
-.label__input:focus{
+
+.label__input:focus {
      outline: none;
      box-shadow: 0 0 5px var(--backgroundPages);
 }
+
 .button-register {
      display: inline-flex;
      flex-direction: row-reverse;
